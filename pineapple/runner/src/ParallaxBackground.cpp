@@ -17,6 +17,8 @@ void parallaxBackground::SetUp(sf::Texture* texture)
 
 void parallaxBackground::InitilizeFallingStar()
 {
+	m_fallingStarYellow.clear();
+	m_fallingStarRed.clear();
 	m_fallingStarYellow.resize(4);
 	m_fallingStarRed.resize(3);
 	float x = 100;
