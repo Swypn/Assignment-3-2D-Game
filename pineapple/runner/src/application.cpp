@@ -241,7 +241,7 @@ namespace runner
        m_currentScore = 0;
        m_ball.Restart();
        m_player.Restart();
-       m_brick.Restart();
+       m_brick.InitializeBricks();
    }
 
    void Application::CollisionCheck()

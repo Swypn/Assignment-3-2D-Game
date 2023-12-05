@@ -16,7 +16,7 @@ public:
 	~BrickContainer() noexcept;
 	void SetUp(sf::Texture* texture);
 	void Update();
-	void Restart();
+	void InitializeBricks();
 	std::vector<Brick> m_brickObject;
 private:
 	sf::Texture m_texture;
