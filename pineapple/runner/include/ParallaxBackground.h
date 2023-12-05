@@ -18,6 +18,7 @@ public:
 	std::vector<parallaxParts> m_fallingStarYellow;
 	std::vector<parallaxParts> m_fallingStarRed;
 	void SetUp(sf::Texture* texture);
+	void InitilizeFallingStar();
 	void Update(float deltatime);
 private:
 	sf::Texture m_texture;
