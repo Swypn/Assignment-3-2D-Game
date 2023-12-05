@@ -1,15 +1,15 @@
 #include "ParallaxBackground.h"
 
-parallaxBackground::parallaxBackground()
+parallaxBackground::parallaxBackground() noexcept
 {
 }
 
-parallaxBackground::~parallaxBackground()
+parallaxBackground::~parallaxBackground() noexcept
 {
 
 }
 
-void parallaxBackground::SetUp(sf::Texture* texture)
+void parallaxBackground::SetUp(sf::Texture* texture) 
 {
 	m_texture = *texture;
 	InitilizeFallingStar();
