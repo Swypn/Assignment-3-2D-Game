@@ -24,6 +24,8 @@ void BrickContainer::Update()
 
 void BrickContainer::InitializeBricks()
 {
+	m_brickObject.clear();
+
 	m_brickObject.resize(13);
 	float x = 0;
 	float y = 100;
