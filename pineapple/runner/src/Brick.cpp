@@ -1,11 +1,11 @@
 #include "Brick.h"
 
-BrickContainer::BrickContainer() // smells with not noexcept
+BrickContainer::BrickContainer() noexcept // smells with not noexcept
 {
 
 };
 
-BrickContainer::~BrickContainer()
+BrickContainer::~BrickContainer() noexcept
 {
 
 };

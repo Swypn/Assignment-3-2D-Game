@@ -12,8 +12,8 @@ struct Brick
 class BrickContainer
 {
 public:
-	BrickContainer();
-	~BrickContainer();
+	BrickContainer() noexcept;
+	~BrickContainer() noexcept;
 	void SetUp(sf::Texture* texture);
 	void Update();
 	void Restart();
