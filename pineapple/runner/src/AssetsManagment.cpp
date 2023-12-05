@@ -7,7 +7,7 @@ AssetsManagement::AssetsManagement()
    
 };
 
-AssetsManagement::~AssetsManagement()
+AssetsManagement::~AssetsManagement() // smell with using raw pointer
 {
     // Delete all of the textures we used
     sf::Texture* texture;

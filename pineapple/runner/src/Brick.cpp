@@ -1,6 +1,6 @@
 #include "Brick.h"
 
-Brick::Brick()
+Brick::Brick() // smells with not noexcept
 {
 
 };
