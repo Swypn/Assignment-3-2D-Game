@@ -58,7 +58,7 @@ namespace runner
       sf::Sprite       m_sprite;
       PlayerCharacter  m_player;
       Ball             m_ball;
-      Brick            m_brick;
+      BrickContainer            m_brick;
       AssetsManagement m_AssetsManagement;
       TheGamesStates   m_CurrentGameState;
       parallaxBackground m_parallaxBackground;

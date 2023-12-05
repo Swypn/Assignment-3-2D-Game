@@ -1,16 +1,16 @@
 #include "Brick.h"
 
-Brick::Brick() // smells with not noexcept
+BrickContainer::BrickContainer() // smells with not noexcept
 {
 
 };
 
-Brick::~Brick()
+BrickContainer::~BrickContainer()
 {
 
 };
 
-void Brick::SetUp(sf::Texture* texture)
+void BrickContainer::SetUp(sf::Texture* texture)
 {
 	m_texture = *texture;
 	m_brickObject.push_back({});
@@ -42,12 +42,12 @@ void Brick::SetUp(sf::Texture* texture)
 }
 	
 
-void Brick::Update()
+void BrickContainer::Update()
 {
 	
 };
 
-void Brick::Restart()
+void BrickContainer::Restart()
 {
 	m_brickObject.clear();
 
