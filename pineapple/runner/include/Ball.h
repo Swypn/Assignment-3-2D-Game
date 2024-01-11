@@ -1,12 +1,6 @@
 #pragma once
 #include "batch.hpp"
 
-//enum class BallMovementDirection
-//{
-//	//I made this to keep check the ball changing direction.
-//	UP, Down, Left, Right
-//};
-
 class Ball 
 {
 public:
