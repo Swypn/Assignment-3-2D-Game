@@ -5,9 +5,9 @@
 namespace runner
 {
     static const std::string kPlayerID  = "player";
-    static const char* kBallID      = "ball";
-    static const char* kBrickID     = "brick";
-    static const char* kFallingStarID = "fallingStar";
+    static const std::string kBallID      = "ball";
+    static const std::string kBrickID     = "brick";
+    static const std::string kFallingStarID = "fallingStar";
 
     Application::Application() : m_window(sf::VideoMode(1280, 720), "Pineapple", sf::Style::Titlebar | sf::Style::Close)
         , m_AssetsManagement()
@@ -32,8 +32,8 @@ namespace runner
         m_minOfScreen = 0.0f;
         loadHighScore();
 
-        m_player.SetUp(m_AssetsManagement.GetTexture(kPlayerID), m_minOfScreen, (float)m_window.getSize().x);
-        m_ball.SetUp(m_AssetsManagement.GetTexture(kBallID), m_window.getSize().x, m_window.getSize().y, (int)m_minOfScreen, (int)m_minOfScreen);
+        m_player.SetUp(m_AssetsManagement.GetTexture(kPlayerID), m_minOfScreen, toFloat(m_window.getSize().x));
+        m_ball.SetUp(m_AssetsManagement.GetTexture(kBallID), m_window.getSize().x, m_window.getSize().y, toInt(m_minOfScreen), toInt(m_minOfScreen));
         m_brick.SetUp(m_AssetsManagement.GetTexture(kBrickID));
         m_parallaxBackground.SetUp(m_AssetsManagement.GetTexture(kFallingStarID));
     }
@@ -45,7 +45,7 @@ namespace runner
          
          while (m_window.pollEvent(event)) {
             if (event.type == sf::Event::MouseMoved) {
-               on_mouse_move({ float(event.mouseMove.x), float(event.mouseMove.y) });
+               on_mouse_move({ toFloat((event.mouseMove.x)), toFloat((event.mouseMove.y)) });
             }
             else if (event.type == sf::Event::MouseButtonPressed) {
                on_button_pressed(event.mouseButton.button);
