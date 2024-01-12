@@ -32,7 +32,6 @@ namespace runner
         m_ScoreText = m_AssetsManagement.SetText("Score", 50, sf::Text::Bold, 1100, 5);
         m_highScoreText = m_AssetsManagement.SetText("", 50, sf::Text::Bold, 0, 5);
 
-
         m_currentScore = 0;
         m_highScoreInt = 0;
         m_minOfScreen = 0.0f;
@@ -45,16 +44,7 @@ namespace runner
     }
 
     void Application::run()
-   {
-  /*    const sf::VideoMode mode{ 1280, 720 };
-      const sf::Uint32 flags = sf::Style::Titlebar | sf::Style::Close;
-      m_window.create(mode, "pineapple", flags);
-      if (!m_window.isOpen() || !enter()) {
-         return;
-      }
-
-      m_window.setKeyRepeatEnabled(false);*/
-      
+   {  
       while (m_window.isOpen()) {
          sf::Event event;
          
@@ -112,13 +102,12 @@ namespace runner
       } 
       else
       {
-          m_highScoreText.setString("HighScore: " + intToString(m_highScoreInt));
+        m_highScoreText.setString("HighScore: " + intToString(m_highScoreInt));
       }
       
       if(m_brick.m_brickObject.empty())
       {
-        //win
-          m_CurrentGameState = TheGamesStates::win;
+        m_CurrentGameState = TheGamesStates::win;
       }
 
       return m_running;
@@ -231,15 +220,11 @@ namespace runner
 
    void Application::on_button_pressed(const  sf::Mouse::Button button)
    {
-
    }
 
    void Application::on_button_released(const sf::Mouse::Button button)
    {
-   
    }
-
-   
 
    void Application::Restart()
    {
