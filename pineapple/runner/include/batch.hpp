@@ -1,11 +1,13 @@
 // batch.hpp
 
 #pragma once
-
-#include <initializer_list>
-#pragma warning(push, 0)
+#include <codeanalysis\warnings.h>
+#pragma warning(push)
+#pragma warning(disable: ALL_CODE_ANALYSIS_WARNINGS)
 #include <SFML/Graphics.hpp>
 #pragma warning(pop)
+
+#include <initializer_list>
 namespace runner
 {
    class PrimitiveBatch final

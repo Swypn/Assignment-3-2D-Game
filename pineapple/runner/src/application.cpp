@@ -1,5 +1,3 @@
-// application.cpp
-
 #include "application.hpp"
 #include <iostream>
 namespace runner
@@ -13,9 +11,12 @@ namespace runner
         , m_AssetsManagement()
 
     {
+#pragma warning(push)
+#pragma warning(disable : 26446)
         if (!m_window.isOpen()) {
             throw std::runtime_error("Failed to open SFML window");
         }
+#pragma warning(pop)
         m_window.setKeyRepeatEnabled(false);
 
         m_CurrentGameState = TheGamesStates::pregame;
@@ -118,7 +119,8 @@ namespace runner
       {
           m_window.draw(m_startMainuText);
       }
-
+#pragma warning(push)
+#pragma warning(disable : 26446)
       if(m_CurrentGameState == TheGamesStates::running)
       {
         for (int i = 0; i < m_parallaxBackground.m_fallingStarYellow.size(); i++)
@@ -139,7 +141,7 @@ namespace runner
         }
         
       }
-
+#pragma warning(pop)
       if(m_CurrentGameState == TheGamesStates::lose)
       {
         m_window.draw(m_LoseText);
@@ -163,7 +165,7 @@ namespace runner
       m_mouse_position = position;
    }
 
-   void Application::on_key_pressed(const sf::Keyboard::Key key) noexcept
+   void Application::on_key_pressed(const sf::Keyboard::Key key)
    {
       if (key == sf::Keyboard::Key::Escape) {
          m_running = false;
@@ -245,7 +247,8 @@ namespace runner
            m_ball.m_direction.y = -m_ball.m_direction.y;
            //std::cout << "hitted a player" << std::endl;
        }
-
+#pragma warning(push)
+#pragma warning(disable : 26446)
        for (int i = 0; i < m_brick.m_brickObject.size(); i++)
        {
            if (AxisAlignedBoundingBox(m_brick.m_brickObject[i].sprite, m_ball.m_ballSprite))
@@ -257,6 +260,7 @@ namespace runner
                //std::cout << "hitted a brick" << std::endl;
            }
        }
+
        for (int i = 0; i < m_parallaxBackground.m_fallingStarYellow.size(); i++)
        {
            if(m_parallaxBackground.m_fallingStarYellow[i].positionY >= m_window.getSize().y)
@@ -264,6 +268,7 @@ namespace runner
                m_parallaxBackground.m_fallingStarYellow[i].positionY = -100;
            }
        }
+
        for (int i = 0; i < m_parallaxBackground.m_fallingStarRed.size(); i++)
        {
            if (m_parallaxBackground.m_fallingStarRed[i].positionY >= m_window.getSize().y)
@@ -271,6 +276,7 @@ namespace runner
                m_parallaxBackground.m_fallingStarRed[i].positionY = -100;
            }
        }
+#pragma warning(pop)
        // If the player is out of bounds or edge of the bottom screen that should give trigger fail condition.
        if(m_ball.m_ballSprite.getPosition().y >= m_window.getSize().y)
        {
@@ -315,7 +321,7 @@ namespace runner
        return string;
    }
 
-   bool Application::AxisAlignedBoundingBox(sf::Sprite& box1, sf::Sprite& box2)
+   bool Application::AxisAlignedBoundingBox(const sf::Sprite& box1, const sf::Sprite& box2)
    {
        const bool collisionX = box1.getPosition().x + box1.getTexture()->getSize().x >= box2.getPosition().x &&
            box2.getPosition().x + box2.getTexture()->getSize().x >= box1.getPosition().x;

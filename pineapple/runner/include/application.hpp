@@ -1,5 +1,3 @@
-// application.hpp
-
 #pragma once
 
 #include <fstream>
@@ -38,14 +36,14 @@ namespace runner
       void Restart();
    private:
       void on_mouse_move(const sf::Vector2f &position) noexcept;
-      void on_key_pressed(const sf::Keyboard::Key key) noexcept;
+      void on_key_pressed(const sf::Keyboard::Key key);
       void on_key_released(const sf::Keyboard::Key key) noexcept;
       void on_button_pressed(const sf::Mouse::Button button) noexcept;
       void on_button_released(const sf::Mouse::Button button) noexcept;
       void loadHighScore();
       void StoreHighScore();
       std::string intToString(int score);
-      bool AxisAlignedBoundingBox(sf::Sprite& box1, sf::Sprite& box2);
+      bool AxisAlignedBoundingBox(const sf::Sprite& box1, const sf::Sprite& box2);
 
 
    private:
@@ -66,7 +64,5 @@ namespace runner
       sf::Text m_startMainuText, m_WinText, m_LoseText, m_ScoreText, m_highScoreText;
       int m_highScoreInt, m_currentScore;
       float m_minOfScreen;
-      //Keep the state through enum instead of bool
-     
    };
 } // !runner

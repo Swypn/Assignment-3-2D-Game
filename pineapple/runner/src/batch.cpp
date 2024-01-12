@@ -1,5 +1,3 @@
-// batch.cpp
-
 #include "batch.hpp"
 
 #include <cassert>
