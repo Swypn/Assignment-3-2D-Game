@@ -13,9 +13,8 @@ class BrickContainer
 {
 public:
 	BrickContainer() noexcept;
-	~BrickContainer() noexcept;
 	void SetUp(sf::Texture* texture);
-	void Update();
+	void Update() noexcept;
 	void InitializeBricks();
 	std::vector<Brick> m_brickObject;
 private:

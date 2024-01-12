@@ -4,14 +4,12 @@
 
 AssetsManagement::AssetsManagement()
 {
-    loadAllResources();
+        loadAllResources();   
 }
 AssetsManagement::~AssetsManagement()
 {
     m_textures.clear();
 }
-;
-
 std::unordered_map< std::string, sf::Texture> AssetsManagement::m_textures;
 
 bool AssetsManagement::LoadFontFile(const std::string& filePath)
@@ -35,7 +33,7 @@ sf::Text AssetsManagement::SetText(const std::string& textSentence, int size, sf
     return text;
 }
 
-int AssetsManagement::GetLength() const
+int AssetsManagement::GetLength() const noexcept
 {
 	return static_cast<int>(m_textures.size());
 }
@@ -67,6 +65,5 @@ void AssetsManagement::loadAllResources()
     LoadTexture("brick", "assets/WhiteHitBrick.png");
     LoadTexture("fallingStar", "assets/FallingStar.png");
 
-    // Load font file
     LoadFontFile("assets/sunny-spells-font/SunnyspellsRegular-MV9ze.otf");
 }

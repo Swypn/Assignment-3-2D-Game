@@ -20,12 +20,6 @@ namespace runner
 
         m_CurrentGameState = TheGamesStates::pregame;
 
-        //m_AssetsManagement.LoadTexture(kPlayerID, "assets/player.png");
-        //m_AssetsManagement.LoadTexture(kBallID, "assets/Ball.png");
-        //m_AssetsManagement.LoadTexture(kBrickID, "assets/WhiteHitBrick.png");
-        //m_AssetsManagement.LoadTexture(kFallingStarID, "assets/FallingStar.png");
-        //m_AssetsManagement.LoadFontFile("assets/sunny-spells-font/SunnyspellsRegular-MV9ze.otf");
-
         // Made simple that function that just set indivual each sf::Text variable for text in the screen
         m_startMainuText = m_AssetsManagement.SetText("Press `space´ to start", 100, sf::Text::Bold, 250, 250);
         m_WinText = m_AssetsManagement.SetText("Winner", 50, sf::Text::Bold, 550, 300);
@@ -81,12 +75,12 @@ namespace runner
       exit();
    }
 
-   bool Application::enter()
+   bool Application::enter() noexcept
    {
       return true;
    }
 
-   void Application::exit()
+   void Application::exit() noexcept
    {
    }
 

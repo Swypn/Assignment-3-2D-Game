@@ -29,8 +29,8 @@ namespace runner
       {
           Texture_player, Texture_ball, Texture_brick  
       };
-      bool enter();
-      void exit();
+      bool enter() noexcept;
+      void exit() noexcept;
       bool update();
       void render();
       void CollisionCheck();

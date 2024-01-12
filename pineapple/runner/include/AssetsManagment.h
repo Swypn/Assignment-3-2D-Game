@@ -9,11 +9,14 @@ public:
 	AssetsManagement();
 	~AssetsManagement();
 	
+	AssetsManagement(const AssetsManagement&) = delete;
+	AssetsManagement& operator=(const AssetsManagement&) = delete;
+
 	bool LoadFontFile(const std::string& filePath);
 
 	sf::Text SetText(const std::string& textSentence, int size, sf::Uint32 textStyle, float positionX, float positionY);
 
-	int GetLength() const;
+	int GetLength() const noexcept;
 
 	sf::Texture* GetTexture(const std::string& name);
 

@@ -4,11 +4,10 @@
 class Ball 
 {
 public:
-	Ball();
-	~Ball();
+	Ball() noexcept;
 	void SetUp(sf::Texture* texture, int rectWidth, int rectHeight, int rectLeft, int rectTop);
 	void BallUpdate(float deltatime);
-	float Length(const sf::Vector2f& rhs);
+	float Length(const sf::Vector2f& rhs) noexcept;
 	void WorldConstraining(float posX, float posY);
 	void Restart();
 	sf::IntRect worldBounds;

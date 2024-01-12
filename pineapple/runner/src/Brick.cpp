@@ -1,11 +1,6 @@
 #include "Brick.h"
 
-BrickContainer::BrickContainer() noexcept // smells with not noexcept
-{
-
-};
-
-BrickContainer::~BrickContainer() noexcept
+BrickContainer::BrickContainer() noexcept 
 {
 
 };
@@ -17,7 +12,7 @@ void BrickContainer::SetUp(sf::Texture* texture)
 }
 	
 
-void BrickContainer::Update()
+void BrickContainer::Update() noexcept
 {
 	
 };
@@ -27,7 +22,7 @@ void BrickContainer::InitializeBricks()
 	m_brickObject.clear();
 	m_brickObject.resize(13);
 	float x = 0;
-	float y = 100;
+	constexpr float y = 100;
 
 	for(auto& bricks : m_brickObject)
 	{

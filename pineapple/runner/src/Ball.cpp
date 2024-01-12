@@ -1,6 +1,6 @@
 #include "Ball.h"
 
-Ball::Ball()
+Ball::Ball() noexcept
 {
 	hasCollided = false;
 	m_speed = 200.0f;
@@ -8,11 +8,6 @@ Ball::Ball()
 	positionY = 400.0f;
 	m_direction.x = positionX;
 	m_direction.y = positionY;
-};
-
-Ball::~Ball()
-{
-
 };
 
 void Ball::SetUp(sf::Texture* texture, int rectWidth, int rectHeight, int rectLeft, int rectTop)
@@ -35,7 +30,7 @@ void Ball::BallUpdate(float deltatime)
 	m_ballSprite.setPosition(positionX, positionY);
 };
 
-float Ball::Length(const sf::Vector2f& rhs)
+float Ball::Length(const sf::Vector2f& rhs) noexcept
 {
 	return std::sqrtf(rhs.x * rhs.x + rhs.y * rhs.y);
 };
