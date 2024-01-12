@@ -10,6 +10,7 @@
 #include "Brick.h"
 #include "AssetsManagment.h"
 #include "ParallaxBackground.h"
+#include "Utility.h"
 
 namespace runner
 {
@@ -36,11 +37,11 @@ namespace runner
       void CollisionCheck();
       void Restart();
    private:
-      void on_mouse_move(const sf::Vector2f &position);
-      void on_key_pressed(const sf::Keyboard::Key key);
-      void on_key_released(const sf::Keyboard::Key key);
-      void on_button_pressed(const sf::Mouse::Button button);
-      void on_button_released(const sf::Mouse::Button button);
+      void on_mouse_move(const sf::Vector2f &position) noexcept;
+      void on_key_pressed(const sf::Keyboard::Key key) noexcept;
+      void on_key_released(const sf::Keyboard::Key key) noexcept;
+      void on_button_pressed(const sf::Mouse::Button button) noexcept;
+      void on_button_released(const sf::Mouse::Button button) noexcept;
       void loadHighScore();
       void StoreHighScore();
       std::string intToString(int score);

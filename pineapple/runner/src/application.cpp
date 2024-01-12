@@ -158,12 +158,12 @@ namespace runner
       m_window.display();
    }
 
-   void Application::on_mouse_move(const sf::Vector2f &position) 
+   void Application::on_mouse_move(const sf::Vector2f &position) noexcept
    {
       m_mouse_position = position;
    }
 
-   void Application::on_key_pressed(const sf::Keyboard::Key key)
+   void Application::on_key_pressed(const sf::Keyboard::Key key) noexcept
    {
       if (key == sf::Keyboard::Key::Escape) {
          m_running = false;
@@ -201,7 +201,7 @@ namespace runner
       }
    }
 
-   void Application::on_key_released(const sf::Keyboard::Key key)
+   void Application::on_key_released(const sf::Keyboard::Key key) noexcept
    {
        if (key == sf::Keyboard::Right)
        {
@@ -213,12 +213,14 @@ namespace runner
        }  
    }
 
-   void Application::on_button_pressed(const  sf::Mouse::Button button)
+   void Application::on_button_pressed(const  sf::Mouse::Button button) noexcept
    {
+
    }
 
-   void Application::on_button_released(const sf::Mouse::Button button)
+   void Application::on_button_released(const sf::Mouse::Button button) noexcept
    {
+
    }
 
    void Application::Restart()
@@ -231,7 +233,7 @@ namespace runner
 
    void Application::CollisionCheck()
    {
-       float r1RightEdge = m_player.m_playerSprite.getPosition().y + m_player.m_playerSprite.getTexture()->getSize().y;
+       const float r1RightEdge = m_player.m_playerSprite.getPosition().y + m_player.m_playerSprite.getTexture()->getSize().y;
        if (r1RightEdge >= m_ball.m_ballSprite.getPosition().y)
        {
            std::cout << " right side someting" << std::endl;
@@ -315,10 +317,10 @@ namespace runner
 
    bool Application::AxisAlignedBoundingBox(sf::Sprite& box1, sf::Sprite& box2)
    {
-       bool collisionX = box1.getPosition().x + box1.getTexture()->getSize().x >= box2.getPosition().x &&
+       const bool collisionX = box1.getPosition().x + box1.getTexture()->getSize().x >= box2.getPosition().x &&
            box2.getPosition().x + box2.getTexture()->getSize().x >= box1.getPosition().x;
 
-       bool collisionY = box1.getPosition().y + box1.getTexture()->getSize().y >= box2.getPosition().y &&
+       const bool collisionY = box1.getPosition().y + box1.getTexture()->getSize().y >= box2.getPosition().y &&
            box2.getPosition().y + box2.getTexture()->getSize().y >= box1.getPosition().y;
        return collisionX && collisionY;
    }

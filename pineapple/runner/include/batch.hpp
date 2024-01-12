@@ -3,8 +3,9 @@
 #pragma once
 
 #include <initializer_list>
+#pragma warning(push, 0)
 #include <SFML/Graphics.hpp>
-
+#pragma warning(pop)
 namespace runner
 {
    class PrimitiveBatch final
