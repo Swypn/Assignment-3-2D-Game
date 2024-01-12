@@ -4,15 +4,13 @@ parallaxBackground::parallaxBackground() noexcept
 {
 }
 
-parallaxBackground::~parallaxBackground() noexcept
+void parallaxBackground::SetUp(const sf::Texture* texture) 
 {
-
-}
-
-void parallaxBackground::SetUp(sf::Texture* texture) 
-{
-	m_texture = *texture;
-	InitilizeFallingStar();
+	if(texture)
+	{
+		m_texture = *texture;
+		InitilizeFallingStar();
+	}
 }
 
 void parallaxBackground::InitilizeFallingStar()
@@ -53,6 +51,8 @@ void parallaxBackground::InitilizeFallingStar()
 
 void parallaxBackground::Update(float deltatime)
 {
+#pragma warning(push)
+#pragma warning(disable : 26446)
 	float fallingSpeed = 125;
 	for (int i = 0; i < m_fallingStarYellow.size(); i++)
 	{
@@ -65,4 +65,5 @@ void parallaxBackground::Update(float deltatime)
 		m_fallingStarRed[i].sprite.setPosition(m_fallingStarRed[i].positionX, m_fallingStarRed[i].positionY += fallingSpeed * deltatime);
 		fallingSpeed -= 15;
 	}
+#pragma warning(pop)
 }

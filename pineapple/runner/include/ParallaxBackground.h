@@ -6,17 +6,17 @@ struct parallaxParts
 {
 	sf::Sprite sprite;
 	sf::Color color;
-	float positionX, positionY;
+	float positionX{};
+	float positionY{};
 };
 
 class parallaxBackground
 {
 public:
 	parallaxBackground() noexcept;
-	~parallaxBackground() noexcept;
 	std::vector<parallaxParts> m_fallingStarYellow;
 	std::vector<parallaxParts> m_fallingStarRed;
-	void SetUp(sf::Texture* texture);
+	void SetUp(const sf::Texture* texture);
 	void InitilizeFallingStar();
 	void Update(float deltatime);
 private:
