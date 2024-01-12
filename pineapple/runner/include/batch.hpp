@@ -8,6 +8,7 @@
 #pragma warning(pop)
 
 #include <initializer_list>
+
 namespace runner
 {
    class PrimitiveBatch final

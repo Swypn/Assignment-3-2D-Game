@@ -4,6 +4,11 @@
 #include <cmath>
 #include <numbers>
 
+#pragma warning(push)
+#pragma warning(disable : 26493) // Disable C-style casts warning
+#pragma warning(disable : 26440) // Disable noexcept warning
+#pragma warning(disable : 26455) // Disable default constructor should not throw warning
+
 namespace runner
 {
    namespace
@@ -184,3 +189,4 @@ namespace runner
       target.draw(m_vertex_buffer, 0, m_vertex_array.getVertexCount());
    }
 } // !runner
+#pragma warning(pop)
