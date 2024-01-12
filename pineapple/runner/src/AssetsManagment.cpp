@@ -1,8 +1,11 @@
 #include "AssetsManagment.h"
+#pragma warning(push)
+#pragma warning(disable : 26455)
 AssetsManagement::AssetsManagement()
 {
         loadAllResources();
 }
+#pragma warning(pop)
 AssetsManagement::~AssetsManagement()
 {
     m_textures.clear();
