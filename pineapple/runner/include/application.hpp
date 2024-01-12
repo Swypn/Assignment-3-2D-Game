@@ -31,7 +31,6 @@ namespace runner
       };
       bool enter();
       void exit();
-      void SetUp();
       bool update();
       void render();
       void CollisionCheck();
