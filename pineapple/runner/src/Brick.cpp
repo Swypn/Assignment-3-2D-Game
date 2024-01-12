@@ -1,14 +1,19 @@
 #include "Brick.h"
 
-BrickContainer::BrickContainer() noexcept 
+BrickContainer::BrickContainer() noexcept
+	: m_texture(),
+	m_brickObject()
 {
 
 };
 
-void BrickContainer::SetUp(sf::Texture* texture)
+void BrickContainer::SetUp(const sf::Texture* texture)
 {
-	m_texture = *texture;
-	InitializeBricks();
+	if(texture)
+	{
+		m_texture = *texture;
+		InitializeBricks();
+	}
 }
 	
 

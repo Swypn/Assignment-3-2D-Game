@@ -6,14 +6,15 @@ struct Brick
 {
 	sf::Sprite sprite;
 	sf::Color color;
-	float positionX, positionY;
+	float positionX{};
+	float positionY{};
 };
 
 class BrickContainer
 {
 public:
 	BrickContainer() noexcept;
-	void SetUp(sf::Texture* texture);
+	void SetUp(const sf::Texture* texture);
 	void Update() noexcept;
 	void InitializeBricks();
 	std::vector<Brick> m_brickObject;
