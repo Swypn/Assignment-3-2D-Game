@@ -1,6 +1,6 @@
 #include "PlayerCharacter.h"
 
-PlayerCharacter::PlayerCharacter()
+PlayerCharacter::PlayerCharacter() noexcept
 	: defualtMovmentSpeed(700.0f), positionY(650.0f)
 {
 	positionX = 0.0f;
@@ -10,20 +10,18 @@ PlayerCharacter::PlayerCharacter()
 	pressedRight = false;
 };
 
-PlayerCharacter::~PlayerCharacter()
+void PlayerCharacter::SetUp(const sf::Texture* texture, float min, float max)
 {
+	if(texture)
+	{
+		m_playerSprite.setTexture(*texture);
+		m_playerSprite.setPosition(positionX, positionY);
+		m_playerSprite.setScale(1.0f, 0.5f);
+		minPositionX = min;
+		maxPositionX = max;
+		positionX = 500.0f;
+	}
 
-};
-
-void PlayerCharacter::SetUp(sf::Texture* texture, float min, float max)
-{
-	//Thinking is easier to read if I set variables in a SetUp class
-	minPositionX = min;
-	maxPositionX = max;
-	positionX = 500.0f;
-	m_playerSprite.setTexture(*texture);
-	m_playerSprite.setPosition(positionX, positionY);
-	m_playerSprite.setScale(1.0f, 0.5f);
 };
 
 void PlayerCharacter::PlayerUpdate(float deltatime)
@@ -33,7 +31,7 @@ void PlayerCharacter::PlayerUpdate(float deltatime)
 	WorldConstrainingOnPositionX();
 };
 
-void PlayerCharacter::ProcessingInput(float deltatime)
+void PlayerCharacter::ProcessingInput(float deltatime)noexcept
 {
 	if(pressedLeft)
 	{
@@ -45,7 +43,7 @@ void PlayerCharacter::ProcessingInput(float deltatime)
 	}
 };
 
-void PlayerCharacter::WorldConstrainingOnPositionX() 
+void PlayerCharacter::WorldConstrainingOnPositionX() noexcept
 {
 	if(positionX < minPositionX)
 	{
@@ -57,7 +55,7 @@ void PlayerCharacter::WorldConstrainingOnPositionX()
 	}
 };
 
-void PlayerCharacter::Restart()
+void PlayerCharacter::Restart() noexcept
 {
 	positionX = 500.0f;
 }

@@ -5,13 +5,12 @@
 class PlayerCharacter
 {
 public:
-	PlayerCharacter();
-	~PlayerCharacter();
-	void SetUp(sf::Texture* texture, float min, float max);
+	PlayerCharacter() noexcept;
+	void SetUp(const sf::Texture* texture, float min, float max);
 	void PlayerUpdate(float deltatime);
-	void ProcessingInput(float deltatime);
-	void WorldConstrainingOnPositionX();
-	void Restart();
+	void ProcessingInput(float deltatime)noexcept;
+	void WorldConstrainingOnPositionX()noexcept;
+	void Restart()noexcept;
 	sf::Sprite m_playerSprite;
 	bool pressedLeft;
 	bool pressedRight;
