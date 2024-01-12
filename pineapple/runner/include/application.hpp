@@ -48,19 +48,20 @@ namespace runner
 
 
    private:
-      sf::RenderWindow m_window;
-      PrimitiveBatch   m_batch;
-      bool             m_running = true;
-      sf::Clock        m_clock;
-      sf::Time         m_deltatime;
-      sf::Vector2f     m_mouse_position;
-      sf::Sprite       m_sprite{};
-      PlayerCharacter  m_player{};
-      Ball             m_ball{};
-      BrickContainer            m_brick{};
-      AssetsManagement m_AssetsManagement{};
-      TheGamesStates   m_CurrentGameState;
+      sf::RenderWindow   m_window;
+      PrimitiveBatch     m_batch;
+      bool               m_running = true;
+      sf::Clock          m_clock;
+      sf::Time           m_deltatime;
+      sf::Vector2f       m_mouse_position;
+      AssetsManagement   m_AssetsManagement{};
+      sf::Sprite         m_sprite{};
+      PlayerCharacter    m_player{};
+      Ball               m_ball{};
+      BrickContainer     m_brick{};
       parallaxBackground m_parallaxBackground{};
+      
+      TheGamesStates   m_CurrentGameState;
       sf::Text m_startMainuText, m_WinText, m_LoseText, m_ScoreText, m_highScoreText;
       int m_highScoreInt, m_currentScore;
       float m_minOfScreen;

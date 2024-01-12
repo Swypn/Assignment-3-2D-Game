@@ -4,26 +4,18 @@
 
 AssetsManagement::AssetsManagement()
 {
-   
-};
-
-AssetsManagement::~AssetsManagement() // smell with using raw pointer
+    loadAllResources();
+}
+AssetsManagement::~AssetsManagement()
 {
-    // Delete all of the textures we used
-    sf::Texture* texture;
-    std::unordered_map<std::string, sf::Texture*>::iterator iter = m_textures.begin();
-    while (iter != m_textures.end())
-    {
-        texture = iter->second;
-        delete texture;
-        iter++;
-    }
+    m_textures.clear();
+}
+;
 
-};
-
-std::unordered_map< std::string, sf::Texture* > AssetsManagement::m_textures;
+std::unordered_map< std::string, sf::Texture> AssetsManagement::m_textures;
 std::vector<std::string> AssetsManagement::m_order;
 std::unordered_map < std::string, sf::Text*> m_text;
+
 bool AssetsManagement::LoadFontFile(const std::string& filePath)
 {
     if(!m_font.loadFromFile(filePath))
@@ -34,10 +26,9 @@ bool AssetsManagement::LoadFontFile(const std::string& filePath)
     return true;
 }
 
-sf::Text AssetsManagement::SetText(std::string textSentence, int size, sf::Uint32 textStyle, float positionX, float positionY)
+sf::Text AssetsManagement::SetText(const std::string& textSentence, int size, sf::Uint32 textStyle, float positionX, float positionY)
 {
     sf::Text text;
-    //Have m_font as defualt font.
     text.setFont(m_font);
     text.setCharacterSize(size);
     text.setStyle(textStyle);
@@ -46,51 +37,38 @@ sf::Text AssetsManagement::SetText(std::string textSentence, int size, sf::Uint3
     return text;
 }
 
-int AssetsManagement::GetLength()
+int AssetsManagement::GetLength() const
 {
-    int size = static_cast<int>(m_textures.size());
-	return size;
+	return static_cast<int>(m_textures.size());
 }
 
 // Get Texture by Name
-sf::Texture* AssetsManagement::GetTexture(std::string name)
+sf::Texture* AssetsManagement::GetTexture(const std::string& name)
 {
-
-    // See if we have already loaded this texture
-    if (m_textures.find(name) != m_textures.end()) {
-        return m_textures[name];
+    auto it = m_textures.find(name);
+    if (it != m_textures.end()) {
+        return &it->second;
     }
-    else {
-        return NULL;
-    }
-}
-
-// Get Texture by Index
-sf::Texture* AssetsManagement::GetTexture(int index)
-{
-    // Stay DRY and reuse get by name, but get string name from vector with index
-    return GetTexture(m_order.at(index));
+    return nullptr;
 }
 
 // Assign a Texture a Name (for accessing via get) and path (to load from)
-sf::Texture* AssetsManagement::LoadTexture(std::string name, std::string path)
+void AssetsManagement::LoadTexture(const std::string& name,const std::string& path)
 {
-    // Haven't loaded it yet, time to create it
-    sf::Texture* texture = new sf::Texture();
-
-    if (texture->loadFromFile(path))
-    {
-        m_textures[name] = texture;
-
-        // Push to vector the order in which items were loaded into map, for accessing via index.
-        m_order.push_back(name);
-        return m_textures[name];
+    sf::Texture texture;
+    if (texture.loadFromFile(path)) {
+        m_textures[name] = std::move(texture);
     }
-    else
-    {
-        // Could not load the file
-        delete texture;
-        return NULL;
-    }
+}
 
+void AssetsManagement::loadAllResources()
+{
+
+    LoadTexture("player", "assets/player.png");
+    LoadTexture("ball", "assets/Ball.png");
+    LoadTexture("brick", "assets/WhiteHitBrick.png");
+    LoadTexture("fallingStar", "assets/FallingStar.png");
+
+    // Load font file
+    LoadFontFile("assets/sunny-spells-font/SunnyspellsRegular-MV9ze.otf");
 }
