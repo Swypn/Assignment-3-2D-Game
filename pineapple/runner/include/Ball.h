@@ -1,15 +1,15 @@
 #pragma once
 #include "batch.hpp"
-
+#include "Utility.h"
 class Ball 
 {
 public:
 	Ball() noexcept;
-	void SetUp(sf::Texture* texture, int rectWidth, int rectHeight, int rectLeft, int rectTop);
+	void SetUp(const sf::Texture* texture, int rectWidth, int rectHeight, int rectLeft, int rectTop);
 	void BallUpdate(float deltatime);
 	float Length(const sf::Vector2f& rhs) noexcept;
-	void WorldConstraining(float posX, float posY);
-	void Restart();
+	void WorldConstraining(float posX, float posY) noexcept;
+	void Restart() noexcept;
 	sf::IntRect worldBounds;
 	sf::Vector2f Normalized(const sf::Vector2f& rhs);
 	sf::Sprite m_ballSprite;

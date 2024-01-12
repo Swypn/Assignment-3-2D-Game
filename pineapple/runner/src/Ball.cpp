@@ -10,15 +10,19 @@ Ball::Ball() noexcept
 	m_direction.y = positionY;
 };
 
-void Ball::SetUp(sf::Texture* texture, int rectWidth, int rectHeight, int rectLeft, int rectTop)
+void Ball::SetUp(const sf::Texture* texture, int rectWidth, int rectHeight, int rectLeft, int rectTop)
 {
-	m_ballSprite.setTexture(*texture);
-	m_ballSprite.setPosition(positionX, positionY);
-	m_ballSprite.setScale(1.0f, 1.0f);
-	worldBounds.width = rectWidth;
-	worldBounds.height = rectHeight;
-	worldBounds.left = rectLeft;
-	worldBounds.top = rectTop;
+	if(texture)
+	{
+		m_ballSprite.setTexture(*texture);
+		m_ballSprite.setPosition(positionX, positionY);
+		m_ballSprite.setScale(1.0f, 1.0f);
+		worldBounds.width = rectWidth;
+		worldBounds.height = rectHeight;
+		worldBounds.left = rectLeft;
+		worldBounds.top = rectTop;
+	}
+	
 };
 
 void Ball::BallUpdate(float deltatime)
@@ -36,34 +40,29 @@ float Ball::Length(const sf::Vector2f& rhs) noexcept
 };
 
 sf::Vector2f Ball::Normalized(const sf::Vector2f& rhs) {
-	float length = 1.0f / Length(rhs);
-	float x = rhs.x * length;
-	float y = rhs.y * length;
+	const float length = 1.0f / Length(rhs);
+	const float x = rhs.x * length;
+	const float y = rhs.y * length;
 	return sf::Vector2f{ x, y };
 }
 
-void Ball::WorldConstraining(float posX, float posY)
+void Ball::WorldConstraining(float posX, float posY) noexcept
 {
-	if (posX < (float)worldBounds.left)
+	if (posX < toFloat(worldBounds.left))
 	{
 		m_direction.x = -m_direction.x;
 	}
-	if (posX >= (float)worldBounds.width - 50)
+	if (posX >= toFloat(worldBounds.width - 50))
 	{
 		m_direction.x = -m_direction.x;
 	}
-	if (posY < (float)worldBounds.top)
+	if (posY < toFloat(worldBounds.top))
 	{
 		m_direction.y = -m_direction.y;
 	}
-	/*if (posY >= (float)worldBounds.height -50)
-	{
-		m_direction.y = -m_direction.y;
-	}*/
-
 }
 
-void Ball::Restart()
+void Ball::Restart() noexcept
 {
 	m_speed = 200.0f;
 	positionX = 500.0f;
