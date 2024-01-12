@@ -16,7 +16,7 @@ namespace runner
    class Application final
    {
    public:
-      Application() = default;
+      Application();
 
       void run();
 

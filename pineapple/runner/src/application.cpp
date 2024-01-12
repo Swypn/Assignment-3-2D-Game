@@ -9,16 +9,25 @@ namespace runner
     static const char* kBrickID     = "brick";
     static const char* kFallingStarID = "fallingStar";
 
-   void Application::run()
+    Application::Application() : m_window(sf::VideoMode(1280, 720), "Pineapple", sf::Style::Titlebar | sf::Style::Close)
+
+    {
+        if (!m_window.isOpen() || !enter()) {
+            throw std::runtime_error("Failed to open SFML window");
+        }
+        m_window.setKeyRepeatEnabled(false);
+    }
+
+    void Application::run()
    {
-      const sf::VideoMode mode{ 1280, 720 };
+  /*    const sf::VideoMode mode{ 1280, 720 };
       const sf::Uint32 flags = sf::Style::Titlebar | sf::Style::Close;
       m_window.create(mode, "pineapple", flags);
       if (!m_window.isOpen() || !enter()) {
          return;
       }
 
-      m_window.setKeyRepeatEnabled(false);
+      m_window.setKeyRepeatEnabled(false);*/
       
       while (m_window.isOpen()) {
          sf::Event event;
@@ -294,7 +303,7 @@ namespace runner
 
    void Application::loadHighScore()
    {
-              std::ifstream readFile;
+       std::ifstream readFile;
        readFile.open("assets/HighScore.txt");
        if (readFile.is_open())
        {
