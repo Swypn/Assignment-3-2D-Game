@@ -13,8 +13,6 @@ AssetsManagement::~AssetsManagement()
 ;
 
 std::unordered_map< std::string, sf::Texture> AssetsManagement::m_textures;
-std::vector<std::string> AssetsManagement::m_order;
-std::unordered_map < std::string, sf::Text*> m_text;
 
 bool AssetsManagement::LoadFontFile(const std::string& filePath)
 {

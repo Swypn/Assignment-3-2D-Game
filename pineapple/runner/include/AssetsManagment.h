@@ -20,7 +20,6 @@ public:
 	void LoadTexture(const std::string& name,const std::string& path);
 private:
 	static std::unordered_map<std::string, sf::Texture> m_textures;
-	static std::vector<std::string> m_order;
 	sf::Font m_font;
 	void loadAllResources();
 };
