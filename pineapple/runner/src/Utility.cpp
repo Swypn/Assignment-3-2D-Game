@@ -7,3 +7,7 @@ float toFloat(unsigned int value) noexcept {
 int toInt(float value) noexcept {
     return static_cast<int>(value);
 }
+
+int toInt(size_t value) noexcept {
+    return static_cast<int>(value);
+}

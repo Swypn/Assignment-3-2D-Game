@@ -1,10 +1,7 @@
 #include "AssetsManagment.h"
-
-// Most of the method and logic from another project
-
 AssetsManagement::AssetsManagement()
 {
-        loadAllResources();   
+        loadAllResources();
 }
 AssetsManagement::~AssetsManagement()
 {
@@ -38,7 +35,6 @@ int AssetsManagement::GetLength() const noexcept
 	return toInt((m_textures.size()));
 }
 
-// Get Texture by Name
 sf::Texture* AssetsManagement::GetTexture(const std::string& name)
 {
     auto it = m_textures.find(name);
@@ -48,7 +44,6 @@ sf::Texture* AssetsManagement::GetTexture(const std::string& name)
     return nullptr;
 }
 
-// Assign a Texture a Name (for accessing via get) and path (to load from)
 void AssetsManagement::LoadTexture(const std::string& name,const std::string& path)
 {
     sf::Texture texture;

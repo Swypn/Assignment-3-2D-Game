@@ -4,6 +4,7 @@
 #include <vector>
 #include "batch.hpp"
 #include "Utility.h"
+
 class AssetsManagement
 {
 public:
@@ -12,6 +13,8 @@ public:
 	
 	AssetsManagement(const AssetsManagement&) = delete;
 	AssetsManagement& operator=(const AssetsManagement&) = delete;
+	AssetsManagement(AssetsManagement&&) = delete;            
+	AssetsManagement& operator=(AssetsManagement&&) = delete;  
 
 	bool LoadFontFile(const std::string& filePath);
 
