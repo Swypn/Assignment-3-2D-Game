@@ -35,7 +35,7 @@ sf::Text AssetsManagement::SetText(const std::string& textSentence, int size, sf
 
 int AssetsManagement::GetLength() const noexcept
 {
-	return static_cast<int>(m_textures.size());
+	return toInt((m_textures.size()));
 }
 
 // Get Texture by Name

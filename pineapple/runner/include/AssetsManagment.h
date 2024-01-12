@@ -3,6 +3,7 @@
 #include <memory>
 #include <vector>
 #include "batch.hpp"
+#include "Utility.h"
 class AssetsManagement
 {
 public:
