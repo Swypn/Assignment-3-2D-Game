@@ -48,15 +48,15 @@ sf::Vector2f Ball::Normalized(const sf::Vector2f& rhs) {
 
 void Ball::WorldConstraining(float posX, float posY) noexcept
 {
-	if (posX < toFloat(worldBounds.left))
+	if (posX < static_cast<float>(worldBounds.left))
 	{
 		m_direction.x = -m_direction.x;
 	}
-	if (posX >= toFloat(worldBounds.width - 50))
+	if (posX >= static_cast<float>(worldBounds.width - 50))
 	{
 		m_direction.x = -m_direction.x;
 	}
-	if (posY < toFloat(worldBounds.top))
+	if (posY < static_cast<float>(worldBounds.top))
 	{
 		m_direction.y = -m_direction.y;
 	}

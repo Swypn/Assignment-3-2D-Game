@@ -1,4 +1,5 @@
 #include "Utility.h"
+#include <cstddef>
 #pragma warning(push)
 #pragma warning(disable : 26472)
 

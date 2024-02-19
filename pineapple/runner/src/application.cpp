@@ -34,8 +34,8 @@ namespace runner
         m_minOfScreen = 0.0f;
         loadHighScore();
 
-        m_player.SetUp(m_AssetsManagement.GetTexture(kPlayerID), m_minOfScreen, toFloat(m_window.getSize().x));
-        m_ball.SetUp(m_AssetsManagement.GetTexture(kBallID), m_window.getSize().x, m_window.getSize().y, toInt(m_minOfScreen), toInt(m_minOfScreen));
+        m_player.SetUp(m_AssetsManagement.GetTexture(kPlayerID), m_minOfScreen, static_cast<float>(m_window.getSize().x));
+        m_ball.SetUp(m_AssetsManagement.GetTexture(kBallID), m_window.getSize().x, m_window.getSize().y, static_cast<int>(m_minOfScreen), static_cast<int>(m_minOfScreen));
         m_brick.SetUp(m_AssetsManagement.GetTexture(kBrickID));
         m_parallaxBackground.SetUp(m_AssetsManagement.GetTexture(kFallingStarID));
     }
@@ -47,7 +47,7 @@ namespace runner
          
          while (m_window.pollEvent(event)) {
             if (event.type == sf::Event::MouseMoved) {
-               on_mouse_move({ toFloat((event.mouseMove.x)), toFloat((event.mouseMove.y)) });
+               on_mouse_move({ static_cast<float>((event.mouseMove.x)), static_cast<float>((event.mouseMove.y)) });
             }
             else if (event.type == sf::Event::MouseButtonPressed) {
                on_button_pressed(event.mouseButton.button);
