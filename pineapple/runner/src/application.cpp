@@ -226,30 +226,20 @@ namespace runner
 
    void Application::CollisionCheck()
    {
-       const float r1RightEdge = m_player.m_playerSprite.getPosition().y + m_player.m_playerSprite.getTexture()->getSize().y;
-       if (r1RightEdge >= m_ball.m_ballSprite.getPosition().y)
-       {
-           std::cout << " right side someting" << std::endl;
-       };
        if (m_player.CheckCollisionWithBall(m_ball))
        {
-           m_ball.hasCollided = true;
-           m_ball.m_direction.y = -m_ball.m_direction.y;
-       }
-#pragma warning(push)
-#pragma warning(disable : 26446)
-       for (int i = 0; i < m_brick.m_brickSprites.size(); i++)
-       {
-           if (AxisAlignedBoundingBox(m_brick.m_brickSprites[i], m_ball.m_ballSprite))
-           {
-               m_ball.m_direction.y = -m_ball.m_direction.y;
-               m_ball.m_speed += 10.0f;
-               m_brick.m_brickSprites.erase(m_brick.m_brickSprites.begin() + i);
-               m_currentScore++;
-           }
+           m_ball.FlipVertcialDirection();
        }
 
-#pragma warning(pop)
+       auto collidedBrickIndices = m_brick.checkCollisionsWithBall(m_ball);
+       for (const int index : collidedBrickIndices)
+       {
+               m_ball.FlipVertcialDirection();
+               m_ball.IncreaseSpeed(10.0f);
+               m_brick.deleteBrickAtIndex(index);
+               ++m_currentScore;
+       }
+
        if(m_ball.m_ballSprite.getPosition().y >= m_window.getSize().y)
        {
            m_CurrentGameState = TheGamesStates::lose;

@@ -10,12 +10,14 @@ public:
 	void WorldConstraining(float posX, float posY) noexcept;
 	void Draw(sf::RenderWindow& window);
 	void Restart();
+	void FlipVertcialDirection() noexcept;
+	void IncreaseSpeed(float increment) noexcept;
+	
 	sf::Sprite GetSprite() const noexcept;
 	sf::IntRect worldBounds;
 	sf::Vector2f Normalized(const sf::Vector2f& rhs);
 	sf::Sprite m_ballSprite;
 	sf::Vector2f m_direction;
-	bool hasCollided = false;
 	float m_speed = 200.0f;
 private:
 	float positionX = 500.0f;

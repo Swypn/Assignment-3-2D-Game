@@ -39,3 +39,21 @@ void BrickContainer::InitializeBricks(const sf::Texture& texture, int numBricks,
 		x += sprite.getLocalBounds().width + spacingX;
 	}
 }
+
+void BrickContainer::deleteBrickAtIndex(int index) noexcept
+{
+	if (index >= 0 && index < m_brickSprites.size()) {
+		m_brickSprites.erase(m_brickSprites.begin() + index);
+	}
+}
+
+std::vector<int> BrickContainer::checkCollisionsWithBall(const Ball& ball)
+{
+	std::vector<int> collidedIndices;
+	for (int i = 0; i < m_brickSprites.size(); ++i) {
+		if (Utility::AxisAlignedBoundingBox(ball.m_ballSprite, m_brickSprites[i])) {
+			collidedIndices.push_back(i);
+		}
+	}
+	return collidedIndices;
+}

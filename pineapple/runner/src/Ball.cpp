@@ -61,6 +61,16 @@ void Ball::Restart()
 	m_ballSprite.setPosition(positionX, positionY);
 }
 
+void Ball::FlipVertcialDirection() noexcept
+{
+	m_direction.y = -m_direction.y;
+}
+
+void Ball::IncreaseSpeed(float increment) noexcept
+{
+	m_speed += increment;
+}
+
 sf::Sprite Ball::GetSprite() const noexcept
 {
 	return m_ballSprite;
