@@ -10,21 +10,6 @@ Ball::Ball(const sf::Texture& texture, int rectWidth, int rectHeight, int rectLe
 	m_direction = { positionX, positionY };
 };
 
-void Ball::SetUp(const sf::Texture* texture, int rectWidth, int rectHeight, int rectLeft, int rectTop)
-{
-	if(texture)
-	{
-		m_ballSprite.setTexture(*texture);
-		m_ballSprite.setPosition(positionX, positionY);
-		m_ballSprite.setScale(1.0f, 1.0f);
-		worldBounds.width = rectWidth;
-		worldBounds.height = rectHeight;
-		worldBounds.left = rectLeft;
-		worldBounds.top = rectTop;
-	}
-	
-};
-
 void Ball::BallUpdate(float deltatime)
 {
 	WorldConstraining(positionX, positionY);

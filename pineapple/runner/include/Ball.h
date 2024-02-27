@@ -5,7 +5,6 @@ class Ball
 {
 public:
 	Ball(const sf::Texture& texture, int rectWidth, int rectHeight, int rectLeft, int rectTop);
-	void SetUp(const sf::Texture* texture, int rectWidth, int rectHeight, int rectLeft, int rectTop);
 	void BallUpdate(float deltatime);
 	float Length(const sf::Vector2f& rhs) noexcept;
 	void WorldConstraining(float posX, float posY) noexcept;

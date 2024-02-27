@@ -37,7 +37,6 @@ namespace runner
         loadHighScore();
 
         m_player.SetUp(m_AssetsManagement.GetTexture(kPlayerID), m_minOfScreen, static_cast<float>(m_window.getSize().x));
-        m_ball.SetUp(m_AssetsManagement.GetTexture(kBallID), m_window.getSize().x, m_window.getSize().y, static_cast<int>(m_minOfScreen), static_cast<int>(m_minOfScreen));
         m_parallaxBackground.SetUp(m_AssetsManagement.GetTexture(kFallingStarID));
     }
 #pragma warning(pop)
