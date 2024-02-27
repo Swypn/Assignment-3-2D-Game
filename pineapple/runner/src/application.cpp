@@ -233,6 +233,7 @@ namespace runner
        m_ball.Restart();
        m_player.Restart();
        m_brick.Restart();
+       m_parallaxBackground.Restart();
    }
 
    void Application::CollisionCheck()

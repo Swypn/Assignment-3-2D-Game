@@ -1,44 +1,26 @@
 #include "ParallaxBackground.h"
 
 parallaxBackground::parallaxBackground(const sf::Texture& texture)
-	: m_texture(texture)
+	: m_texture(texture), m_yellowStarCount(4), m_redStarCount(3)
 {
-	InitilizeFallingStar();
+	InitializeFallingStars(sf::Color::Yellow, 100.0f, -100.0f, m_yellowStarCount, m_fallingStarYellow);
+	InitializeFallingStars(sf::Color::Red, 250.0f, -300.0f, m_redStarCount, m_fallingStarRed);
 }
 
-void parallaxBackground::InitilizeFallingStar()
+void parallaxBackground::InitializeFallingStars(sf::Color color, float startX, float startY, int count, std::vector<parallaxPart>& stars)
 {
-	m_fallingStarYellow.clear();
-	m_fallingStarRed.clear();
-	m_fallingStarYellow.resize(4);
-	m_fallingStarRed.resize(3);
-	float x = 100;
-	float y = -100;
-
-	for(auto& fallingYellowStars : m_fallingStarYellow)
-	{
-		fallingYellowStars.sprite.setTexture(m_texture);
-		fallingYellowStars.color = sf::Color::Yellow;
-		fallingYellowStars.positionX = x;
-		fallingYellowStars.positionY = y;
-		x += 350;
-		fallingYellowStars.sprite.setPosition(fallingYellowStars.positionX, fallingYellowStars.positionY);
-		fallingYellowStars.sprite.setScale(0.5f, 0.5f);
-		fallingYellowStars.sprite.setColor(fallingYellowStars.color);
-	}
-	y = -300;
-	x = 250;
-
-	for (auto& fallingRedStars : m_fallingStarRed)
-	{
-		fallingRedStars.sprite.setTexture(m_texture);
-		fallingRedStars.color = sf::Color::Yellow;
-		fallingRedStars.positionX = x;
-		fallingRedStars.positionY = y;
-		x += 350;
-		fallingRedStars.sprite.setPosition(fallingRedStars.positionX, fallingRedStars.positionY);
-		fallingRedStars.sprite.setScale(0.5f, 0.5f);
-		fallingRedStars.sprite.setColor(fallingRedStars.color);
+	stars.clear();
+	float x = startX;
+	for (int i = 0; i < count; ++i) {
+		parallaxPart part;
+		part.sprite.setTexture(m_texture);
+		part.sprite.setColor(color);
+		part.positionX = x;
+		part.positionY = startY;
+		part.sprite.setPosition(part.positionX, part.positionY);
+		part.sprite.setScale(0.5f, 0.5f);
+		stars.push_back(part);
+		x += 350.0f; // Adjust for the next star
 	}
 }
 
@@ -59,4 +41,10 @@ void parallaxBackground::Update(float deltatime)
 		fallingSpeed -= 15;
 	}
 #pragma warning(pop)
+}
+
+void parallaxBackground::Restart()
+{
+	InitializeFallingStars(sf::Color::Yellow, 100.0f, -100.0f, m_yellowStarCount, m_fallingStarYellow);
+	InitializeFallingStars(sf::Color::Red, 250.0f, -300.0f, m_redStarCount, m_fallingStarRed);
 }
