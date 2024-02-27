@@ -2,22 +2,20 @@
 
 #include "batch.hpp"
 #include <vector>
-struct Brick
-{
-	sf::Sprite sprite;
-	sf::Color color;
-	float positionX{};
-	float positionY{};
-};
 
 class BrickContainer
 {
 public:
-	BrickContainer() noexcept;
-	void SetUp(const sf::Texture* texture);
+	BrickContainer(const sf::Texture& texture, int numBricks, 
+	float startX, float startY, float spacingX);
 	void Update() noexcept;
-	void InitializeBricks();
-	std::vector<Brick> m_brickObject;
+	void Restart();
+	void InitializeBricks(const sf::Texture& texture, int numBricks, float startX, float startY, float spacingX);
+	std::vector<sf::Sprite> m_brickSprites;
 private:
 	sf::Texture m_texture;
+	int m_numBricks;
+	float m_startX;
+	float m_startY;
+	float m_spacingX;
 };

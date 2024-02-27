@@ -9,7 +9,9 @@ namespace runner
 #pragma warning(push)
 #pragma warning(disable : 26455)
     Application::Application() : m_window(sf::VideoMode(1280, 720), "Pineapple", sf::Style::Titlebar | sf::Style::Close)
-        , m_AssetsManagement(), m_ball(*m_AssetsManagement.GetTexture("ball"), m_window.getSize().x, m_window.getSize().y, 0, 0)
+        , m_AssetsManagement(), 
+        m_ball(*m_AssetsManagement.GetTexture("ball"), m_window.getSize().x, m_window.getSize().y, 0, 0), 
+        m_brick(*m_AssetsManagement.GetTexture("brick"), 13, 0, 100, 0.0f)
 
     {
 #pragma warning(push)
@@ -36,7 +38,6 @@ namespace runner
 
         m_player.SetUp(m_AssetsManagement.GetTexture(kPlayerID), m_minOfScreen, static_cast<float>(m_window.getSize().x));
         m_ball.SetUp(m_AssetsManagement.GetTexture(kBallID), m_window.getSize().x, m_window.getSize().y, static_cast<int>(m_minOfScreen), static_cast<int>(m_minOfScreen));
-        m_brick.SetUp(m_AssetsManagement.GetTexture(kBrickID));
         m_parallaxBackground.SetUp(m_AssetsManagement.GetTexture(kFallingStarID));
     }
 #pragma warning(pop)
@@ -102,7 +103,7 @@ namespace runner
         m_highScoreText.setString("HighScore: " + intToString(m_highScoreInt));
       }
       
-      if(m_brick.m_brickObject.empty())
+      if(m_brick.m_brickSprites.empty())
       {
         m_CurrentGameState = TheGamesStates::win;
       }
@@ -136,9 +137,9 @@ namespace runner
         m_window.draw(m_player.m_playerSprite);
         m_window.draw(m_ball.m_ballSprite);
 
-        for(int i = 0; i < m_brick.m_brickObject.size(); i++)
+        for(int i = 0; i < m_brick.m_brickSprites.size(); i++)
         {
-           m_window.draw(m_brick.m_brickObject[i].sprite);
+           m_window.draw(m_brick.m_brickSprites[i]);
         }
         
       }
@@ -231,7 +232,7 @@ namespace runner
        m_currentScore = 0;
        m_ball.Restart();
        m_player.Restart();
-       m_brick.InitializeBricks();
+       m_brick.Restart();
    }
 
    void Application::CollisionCheck()
@@ -250,13 +251,13 @@ namespace runner
        }
 #pragma warning(push)
 #pragma warning(disable : 26446)
-       for (int i = 0; i < m_brick.m_brickObject.size(); i++)
+       for (int i = 0; i < m_brick.m_brickSprites.size(); i++)
        {
-           if (AxisAlignedBoundingBox(m_brick.m_brickObject[i].sprite, m_ball.m_ballSprite))
+           if (AxisAlignedBoundingBox(m_brick.m_brickSprites[i], m_ball.m_ballSprite))
            {
                m_ball.m_direction.y = -m_ball.m_direction.y;
                m_ball.m_speed += 10.0f;
-               m_brick.m_brickObject.erase(m_brick.m_brickObject.begin() + i);
+               m_brick.m_brickSprites.erase(m_brick.m_brickSprites.begin() + i);
                m_currentScore++;
                //std::cout << "hitted a brick" << std::endl;
            }
