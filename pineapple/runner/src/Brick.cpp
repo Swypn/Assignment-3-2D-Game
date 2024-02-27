@@ -47,6 +47,11 @@ void BrickContainer::deleteBrickAtIndex(int index) noexcept
 	}
 }
 
+bool BrickContainer::areBricksGone() const
+{
+	return m_brickSprites.empty();
+}
+
 std::vector<int> BrickContainer::checkCollisionsWithBall(const Ball& ball)
 {
 	std::vector<int> collidedIndices;

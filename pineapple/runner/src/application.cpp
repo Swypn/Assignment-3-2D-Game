@@ -103,7 +103,7 @@ namespace runner
         m_highScoreText.setString("HighScore: " + intToString(m_highScoreInt));
       }
       
-      if(m_brick.m_brickSprites.empty())
+      if(m_brick.areBricksGone())
       {
         m_CurrentGameState = TheGamesStates::win;
       }
@@ -280,15 +280,5 @@ namespace runner
    {
        std::string string = std::to_string(score);
        return string;
-   }
-
-   bool Application::AxisAlignedBoundingBox(const sf::Sprite& box1, const sf::Sprite& box2)
-   {
-       const bool collisionX = box1.getPosition().x + box1.getTexture()->getSize().x >= box2.getPosition().x &&
-           box2.getPosition().x + box2.getTexture()->getSize().x >= box1.getPosition().x;
-
-       const bool collisionY = box1.getPosition().y + box1.getTexture()->getSize().y >= box2.getPosition().y &&
-           box2.getPosition().y + box2.getTexture()->getSize().y >= box1.getPosition().y;
-       return collisionX && collisionY;
    }
 } // !runner

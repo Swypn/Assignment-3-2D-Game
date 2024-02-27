@@ -43,7 +43,6 @@ namespace runner
       void loadHighScore();
       void StoreHighScore();
       std::string intToString(int score);
-      bool AxisAlignedBoundingBox(const sf::Sprite& box1, const sf::Sprite& box2);
 
 
    private:
