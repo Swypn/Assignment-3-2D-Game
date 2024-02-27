@@ -56,7 +56,7 @@ namespace runner
       AssetsManagement   m_AssetsManagement{};
       sf::Sprite         m_sprite{};
       PlayerCharacter    m_player{};
-      Ball               m_ball{};
+      Ball               m_ball;
       BrickContainer     m_brick{};
       parallaxBackground m_parallaxBackground{};
       

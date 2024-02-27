@@ -9,7 +9,7 @@ namespace runner
 #pragma warning(push)
 #pragma warning(disable : 26455)
     Application::Application() : m_window(sf::VideoMode(1280, 720), "Pineapple", sf::Style::Titlebar | sf::Style::Close)
-        , m_AssetsManagement()
+        , m_AssetsManagement(), m_ball(*m_AssetsManagement.GetTexture("ball"), m_window.getSize().x, m_window.getSize().y, 0, 0)
 
     {
 #pragma warning(push)

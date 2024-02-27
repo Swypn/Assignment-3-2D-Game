@@ -1,13 +1,13 @@
 #include "Ball.h"
 
-Ball::Ball() noexcept
+Ball::Ball(const sf::Texture& texture, int rectWidth, int rectHeight, int rectLeft, int rectTop)
 {
-	hasCollided = false;
-	m_speed = 200.0f;
-	positionX = 500.0f;
-	positionY = 400.0f;
-	m_direction.x = positionX;
-	m_direction.y = positionY;
+	m_ballSprite.setTexture(texture);
+	m_ballSprite.setPosition(positionX, positionY);
+	m_ballSprite.setScale(1.0f, 1.0f);
+
+	worldBounds = { rectLeft, rectTop, rectWidth, rectHeight };
+	m_direction = { positionX, positionY };
 };
 
 void Ball::SetUp(const sf::Texture* texture, int rectWidth, int rectHeight, int rectLeft, int rectTop)
@@ -62,11 +62,11 @@ void Ball::WorldConstraining(float posX, float posY) noexcept
 	}
 }
 
-void Ball::Restart() noexcept
+void Ball::Restart()
 {
 	m_speed = 200.0f;
 	positionX = 500.0f;
 	positionY = 400.0f;
-	m_direction.x = positionX;
-	m_direction.y = positionY;
+	m_direction = { positionX, positionY };
+	m_ballSprite.setPosition(positionX, positionY);
 }
