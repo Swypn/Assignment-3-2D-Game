@@ -240,7 +240,7 @@ namespace runner
                ++m_currentScore;
        }
 
-       if(m_ball.m_ballSprite.getPosition().y >= m_window.getSize().y)
+       if(m_ball.GetPosition().y >= m_window.getSize().y)
        {
            m_CurrentGameState = TheGamesStates::lose;
        }

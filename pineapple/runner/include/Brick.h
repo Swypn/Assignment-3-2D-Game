@@ -14,7 +14,7 @@ public:
 	void Draw(sf::RenderWindow& window);
 	void InitializeBricks(const sf::Texture& texture, int numBricks, float startX, float startY, float spacingX);
 	void deleteBrickAtIndex(int index) noexcept;
-	bool areBricksGone() const;
+	bool areBricksGone() const noexcept;
 	std::vector<int> checkCollisionsWithBall(const Ball& ball);
 private:
 	std::vector<sf::Sprite> m_brickSprites;

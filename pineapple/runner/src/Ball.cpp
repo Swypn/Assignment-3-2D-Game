@@ -71,6 +71,11 @@ void Ball::IncreaseSpeed(float increment) noexcept
 	m_speed += increment;
 }
 
+sf::Vector2f Ball::GetPosition() const
+{
+	return m_ballSprite.getPosition();
+}
+
 sf::Sprite Ball::GetSprite() const noexcept
 {
 	return m_ballSprite;

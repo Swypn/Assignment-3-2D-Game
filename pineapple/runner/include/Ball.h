@@ -12,14 +12,14 @@ public:
 	void Restart();
 	void FlipVertcialDirection() noexcept;
 	void IncreaseSpeed(float increment) noexcept;
-	
+	sf::Vector2f GetPosition() const;
 	sf::Sprite GetSprite() const noexcept;
-	sf::IntRect worldBounds;
 	sf::Vector2f Normalized(const sf::Vector2f& rhs);
-	sf::Sprite m_ballSprite;
-	sf::Vector2f m_direction;
-	float m_speed = 200.0f;
 private:
+	sf::Vector2f m_direction;
+	sf::Sprite m_ballSprite;
+	sf::IntRect worldBounds;
+	float m_speed = 200.0f;
 	float positionX = 500.0f;
 	float positionY = 400.0f;
 };
