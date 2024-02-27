@@ -10,6 +10,7 @@ public:
 	void WorldConstraining(float posX, float posY) noexcept;
 	void Draw(sf::RenderWindow& window);
 	void Restart();
+	sf::Sprite GetSprite() const noexcept;
 	sf::IntRect worldBounds;
 	sf::Vector2f Normalized(const sf::Vector2f& rhs);
 	sf::Sprite m_ballSprite;

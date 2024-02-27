@@ -60,3 +60,8 @@ void Ball::Restart()
 	m_direction = { positionX, positionY };
 	m_ballSprite.setPosition(positionX, positionY);
 }
+
+sf::Sprite Ball::GetSprite() const noexcept
+{
+	return m_ballSprite;
+}

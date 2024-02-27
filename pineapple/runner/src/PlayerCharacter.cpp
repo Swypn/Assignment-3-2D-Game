@@ -41,6 +41,10 @@ void PlayerCharacter::WorldConstrainingOnPositionX() noexcept
 		positionX = maxPositionX - 150.0f;
 	}
 }
+bool PlayerCharacter::CheckCollisionWithBall(const Ball& ball) const
+{
+	return Utility::AxisAlignedBoundingBox(this->m_playerSprite, ball.GetSprite());
+}
 void PlayerCharacter::Draw(sf::RenderWindow& window)
 {
 	window.draw(m_playerSprite);

@@ -1,6 +1,8 @@
 #pragma once
 
 #include "batch.hpp"
+#include "Ball.h"
+#include "Utility.h"
 
 class PlayerCharacter
 {
@@ -9,6 +11,7 @@ public:
 	void PlayerUpdate(float deltatime);
 	void ProcessingInput(float deltatime)noexcept;
 	void WorldConstrainingOnPositionX()noexcept;
+	bool CheckCollisionWithBall(const Ball& ball) const;
 	void Draw(sf::RenderWindow& window);
 	void Restart()noexcept;
 	sf::Sprite m_playerSprite;

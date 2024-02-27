@@ -92,7 +92,7 @@ namespace runner
       m_deltatime = m_clock.restart();
       if(m_CurrentGameState == TheGamesStates::running)
       {
-        m_parallaxBackground.Update(m_deltatime.asSeconds());
+        m_parallaxBackground.Update(m_deltatime.asSeconds(), static_cast<float>(m_window.getSize().y));
         m_ScoreText.setString("Score: " + intToString(m_currentScore));
         m_player.PlayerUpdate(m_deltatime.asSeconds());
         m_ball.BallUpdate(m_deltatime.asSeconds());
@@ -121,8 +121,7 @@ namespace runner
       {
           m_window.draw(m_startMainuText);
       }
-#pragma warning(push)
-#pragma warning(disable : 26446)
+
       if(m_CurrentGameState == TheGamesStates::running)
       {
         m_parallaxBackground.Draw(m_window);
@@ -132,7 +131,7 @@ namespace runner
         m_brick.Draw(m_window);
         
       }
-#pragma warning(pop)
+
       if(m_CurrentGameState == TheGamesStates::lose)
       {
         m_window.draw(m_LoseText);
@@ -232,12 +231,10 @@ namespace runner
        {
            std::cout << " right side someting" << std::endl;
        };
-       if (AxisAlignedBoundingBox(m_player.m_playerSprite, m_ball.m_ballSprite))
+       if (m_player.CheckCollisionWithBall(m_ball))
        {
-           
            m_ball.hasCollided = true;
            m_ball.m_direction.y = -m_ball.m_direction.y;
-           //std::cout << "hitted a player" << std::endl;
        }
 #pragma warning(push)
 #pragma warning(disable : 26446)
@@ -249,31 +246,13 @@ namespace runner
                m_ball.m_speed += 10.0f;
                m_brick.m_brickSprites.erase(m_brick.m_brickSprites.begin() + i);
                m_currentScore++;
-               //std::cout << "hitted a brick" << std::endl;
            }
        }
 
-       for (int i = 0; i < m_parallaxBackground.m_fallingStarYellow.size(); i++)
-       {
-           if(m_parallaxBackground.m_fallingStarYellow[i].positionY >= m_window.getSize().y)
-           {
-               m_parallaxBackground.m_fallingStarYellow[i].positionY = -100;
-           }
-       }
-
-       for (int i = 0; i < m_parallaxBackground.m_fallingStarRed.size(); i++)
-       {
-           if (m_parallaxBackground.m_fallingStarRed[i].positionY >= m_window.getSize().y)
-           {
-               m_parallaxBackground.m_fallingStarRed[i].positionY = -100;
-           }
-       }
 #pragma warning(pop)
-       // If the player is out of bounds or edge of the bottom screen that should give trigger fail condition.
        if(m_ball.m_ballSprite.getPosition().y >= m_window.getSize().y)
        {
            m_CurrentGameState = TheGamesStates::lose;
-           //std::cout << "lose" << std::endl;
        }
    }
 

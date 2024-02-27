@@ -24,24 +24,23 @@ void parallaxBackground::InitializeFallingStars(sf::Color color, float startX, f
 	}
 }
 
-void parallaxBackground::Update(float deltatime)
+void parallaxBackground::Update(float deltatime, float windowHeight)
 {
-#pragma warning(push)
-#pragma warning(disable : 26446)
-	float fallingSpeed = 125.0f;
-	for (auto& star : m_fallingStarYellow) {
-		star.positionY += fallingSpeed * deltatime;
-		star.sprite.setPosition(star.positionX, star.positionY);
-		fallingSpeed += 25.0f;
-	}
+	UpdateStars(m_fallingStarYellow, deltatime, windowHeight, 125.0f, 25.0f);
+	UpdateStars(m_fallingStarRed, deltatime, windowHeight, 100.0f, -15.0f);
+}
 
-	fallingSpeed = 100.0f;
-	for (auto& star : m_fallingStarRed) {
-		star.positionY += fallingSpeed * deltatime;
+void parallaxBackground::UpdateStars(std::vector<parallaxPart>& stars, float deltaTime, float windowHeight, float initialSpeed, float speedIncrement)
+{
+	float fallingSpeed = initialSpeed;
+	for (auto& star : stars) {
+		star.positionY += fallingSpeed * deltaTime;
+		if (star.positionY >= windowHeight) {
+			star.positionY = -100.0f; // Reset star position
+		}
 		star.sprite.setPosition(star.positionX, star.positionY);
-		fallingSpeed -= 15.0f;
+		fallingSpeed += speedIncrement;
 	}
-#pragma warning(pop)
 }
 
 void parallaxBackground::Draw(sf::RenderWindow& window)
