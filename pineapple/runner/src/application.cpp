@@ -162,19 +162,12 @@ namespace runner
       }
       if(key == sf::Keyboard::Key::Left)
       {
-          m_player.pressedLeft = true;
-      } else
-      {
-          m_player.pressedLeft = false;
+          m_player.SetLeftPressed(true);
       }
       
       if(key == sf::Keyboard::Right)
       {
-          m_player.pressedRight = true;
-      }
-      else
-      {
-          m_player.pressedRight = false;
+          m_player.SetRightPressed(true);
       }
 
       if(m_CurrentGameState == TheGamesStates::pregame)
@@ -197,23 +190,19 @@ namespace runner
    {
        if (key == sf::Keyboard::Right)
        {
-           m_player.pressedRight = false;
+           m_player.SetRightPressed(false);
        }
        if (key == sf::Keyboard::Key::Left)
        {
-           m_player.pressedLeft = false;
+           m_player.SetLeftPressed(false);
        }  
    }
 
    void Application::on_button_pressed(const  sf::Mouse::Button button) noexcept
-   {
-
-   }
+   {}
 
    void Application::on_button_released(const sf::Mouse::Button button) noexcept
-   {
-
-   }
+   {}
 
    void Application::Restart()
    {

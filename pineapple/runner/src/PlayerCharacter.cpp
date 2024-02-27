@@ -54,3 +54,13 @@ void PlayerCharacter::Restart() noexcept
 {
 	positionX = 500.0f;
 }
+
+bool PlayerCharacter::SetLeftPressed(bool state) noexcept
+{
+	return pressedLeft = state;
+}
+
+bool PlayerCharacter::SetRightPressed(bool state) noexcept
+{
+	return pressedRight = state;
+}

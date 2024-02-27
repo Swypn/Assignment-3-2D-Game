@@ -14,10 +14,12 @@ public:
 	bool CheckCollisionWithBall(const Ball& ball) const;
 	void Draw(sf::RenderWindow& window);
 	void Restart()noexcept;
-	sf::Sprite m_playerSprite;
+	bool SetLeftPressed(bool state) noexcept;
+	bool SetRightPressed(bool state) noexcept;
+private:
 	bool pressedLeft;
 	bool pressedRight;
-private:
+	sf::Sprite m_playerSprite;
 	const float defualtMovmentSpeed;
 	const float positionY;
 	float positionX;
