@@ -28,17 +28,18 @@ void parallaxBackground::Update(float deltatime)
 {
 #pragma warning(push)
 #pragma warning(disable : 26446)
-	float fallingSpeed = 125;
-	for (int i = 0; i < m_fallingStarYellow.size(); i++)
-	{
-		m_fallingStarYellow[i].sprite.setPosition(m_fallingStarYellow[i].positionX, m_fallingStarYellow[i].positionY += fallingSpeed * deltatime);
-		fallingSpeed += 25;
+	float fallingSpeed = 125.0f;
+	for (auto& star : m_fallingStarYellow) {
+		star.positionY += fallingSpeed * deltatime;
+		star.sprite.setPosition(star.positionX, star.positionY);
+		fallingSpeed += 25.0f;
 	}
-	fallingSpeed = 100;
-	for (int i = 0; i < m_fallingStarRed.size(); i++)
-	{
-		m_fallingStarRed[i].sprite.setPosition(m_fallingStarRed[i].positionX, m_fallingStarRed[i].positionY += fallingSpeed * deltatime);
-		fallingSpeed -= 15;
+
+	fallingSpeed = 100.0f;
+	for (auto& star : m_fallingStarRed) {
+		star.positionY += fallingSpeed * deltatime;
+		star.sprite.setPosition(star.positionX, star.positionY);
+		fallingSpeed -= 15.0f;
 	}
 #pragma warning(pop)
 }
