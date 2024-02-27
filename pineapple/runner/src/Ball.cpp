@@ -47,6 +47,11 @@ void Ball::WorldConstraining(float posX, float posY) noexcept
 	}
 }
 
+void Ball::Draw(sf::RenderWindow& window)
+{
+	window.draw(m_ballSprite);
+}
+
 void Ball::Restart()
 {
 	m_speed = 200.0f;

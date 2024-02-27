@@ -40,6 +40,10 @@ void PlayerCharacter::WorldConstrainingOnPositionX() noexcept
 	{
 		positionX = maxPositionX - 150.0f;
 	}
+}
+void PlayerCharacter::Draw(sf::RenderWindow& window)
+{
+	window.draw(m_playerSprite);
 };
 
 void PlayerCharacter::Restart() noexcept

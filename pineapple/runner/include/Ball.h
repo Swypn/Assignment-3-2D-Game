@@ -8,6 +8,7 @@ public:
 	void BallUpdate(float deltatime);
 	float Length(const sf::Vector2f& rhs) noexcept;
 	void WorldConstraining(float posX, float posY) noexcept;
+	void Draw(sf::RenderWindow& window);
 	void Restart();
 	sf::IntRect worldBounds;
 	sf::Vector2f Normalized(const sf::Vector2f& rhs);

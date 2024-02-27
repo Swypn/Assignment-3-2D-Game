@@ -127,8 +127,8 @@ namespace runner
       {
         m_parallaxBackground.Draw(m_window);
         m_window.draw(m_ScoreText);
-        m_window.draw(m_player.m_playerSprite);
-        m_window.draw(m_ball.m_ballSprite);
+        m_player.Draw(m_window);
+        m_ball.Draw(m_window);
         m_brick.Draw(m_window);
         
       }

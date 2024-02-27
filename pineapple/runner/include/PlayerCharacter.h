@@ -9,6 +9,7 @@ public:
 	void PlayerUpdate(float deltatime);
 	void ProcessingInput(float deltatime)noexcept;
 	void WorldConstrainingOnPositionX()noexcept;
+	void Draw(sf::RenderWindow& window);
 	void Restart()noexcept;
 	sf::Sprite m_playerSprite;
 	bool pressedLeft;
