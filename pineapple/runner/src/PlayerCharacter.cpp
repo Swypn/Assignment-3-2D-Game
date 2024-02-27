@@ -1,27 +1,14 @@
 #include "PlayerCharacter.h"
 
-PlayerCharacter::PlayerCharacter() noexcept
-	: defualtMovmentSpeed(700.0f), positionY(650.0f)
+PlayerCharacter::PlayerCharacter(const sf::Texture& texture, float min, float max)
+	: defualtMovmentSpeed(700.0f), positionY(650.0f), 
+	positionX(500.0f), minPositionX(min), maxPositionX(max)
 {
-	positionX = 0.0f;
-	minPositionX = 0;
-	maxPositionX = 0;
+	m_playerSprite.setTexture(texture);
+	m_playerSprite.setPosition(positionX, positionY);
+	m_playerSprite.setScale(1.0f, 0.5f);
 	pressedLeft = false;
 	pressedRight = false;
-};
-
-void PlayerCharacter::SetUp(const sf::Texture* texture, float min, float max)
-{
-	if(texture)
-	{
-		m_playerSprite.setTexture(*texture);
-		m_playerSprite.setPosition(positionX, positionY);
-		m_playerSprite.setScale(1.0f, 0.5f);
-		minPositionX = min;
-		maxPositionX = max;
-		positionX = 500.0f;
-	}
-
 };
 
 void PlayerCharacter::PlayerUpdate(float deltatime)

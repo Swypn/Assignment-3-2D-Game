@@ -55,7 +55,7 @@ namespace runner
       sf::Vector2f       m_mouse_position;
       AssetsManagement   m_AssetsManagement{};
       sf::Sprite         m_sprite{};
-      PlayerCharacter    m_player{};
+      PlayerCharacter    m_player;
       Ball               m_ball;
       BrickContainer     m_brick;
       parallaxBackground m_parallaxBackground{};

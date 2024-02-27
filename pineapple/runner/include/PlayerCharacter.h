@@ -5,8 +5,7 @@
 class PlayerCharacter
 {
 public:
-	PlayerCharacter() noexcept;
-	void SetUp(const sf::Texture* texture, float min, float max);
+	PlayerCharacter(const sf::Texture& texture, float minPositionX, float maxPositionX);
 	void PlayerUpdate(float deltatime);
 	void ProcessingInput(float deltatime)noexcept;
 	void WorldConstrainingOnPositionX()noexcept;
