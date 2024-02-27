@@ -13,10 +13,9 @@ struct parallaxParts
 class parallaxBackground
 {
 public:
-	parallaxBackground() noexcept;
+	parallaxBackground(const sf::Texture& texture);
 	std::vector<parallaxParts> m_fallingStarYellow;
 	std::vector<parallaxParts> m_fallingStarRed;
-	void SetUp(const sf::Texture* texture);
 	void InitilizeFallingStar();
 	void Update(float deltatime);
 private:

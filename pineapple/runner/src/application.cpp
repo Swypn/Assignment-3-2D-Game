@@ -9,10 +9,11 @@ namespace runner
 #pragma warning(push)
 #pragma warning(disable : 26455)
     Application::Application() : m_window(sf::VideoMode(1280, 720), "Pineapple", sf::Style::Titlebar | sf::Style::Close)
-        , m_AssetsManagement(), 
-        m_ball(*m_AssetsManagement.GetTexture("ball"), m_window.getSize().x, m_window.getSize().y, 0, 0), 
+        , m_AssetsManagement(),
+        m_ball(*m_AssetsManagement.GetTexture("ball"), m_window.getSize().x, m_window.getSize().y, 0, 0),
         m_brick(*m_AssetsManagement.GetTexture("brick"), 13, 0, 100, 0.0f),
-        m_player(*m_AssetsManagement.GetTexture("player"), 0.0f, static_cast<float>(m_window.getSize().x))
+        m_player(*m_AssetsManagement.GetTexture("player"), 0.0f, static_cast<float>(m_window.getSize().x)),
+        m_parallaxBackground(*m_AssetsManagement.GetTexture("fallingStar"))
 
     {
 #pragma warning(push)
@@ -37,7 +38,7 @@ namespace runner
         m_minOfScreen = 0.0f;
         loadHighScore();
 
-        m_parallaxBackground.SetUp(m_AssetsManagement.GetTexture(kFallingStarID));
+       
     }
 #pragma warning(pop)
     void Application::run()

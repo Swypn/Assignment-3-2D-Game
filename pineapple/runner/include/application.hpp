@@ -58,7 +58,7 @@ namespace runner
       PlayerCharacter    m_player;
       Ball               m_ball;
       BrickContainer     m_brick;
-      parallaxBackground m_parallaxBackground{};
+      parallaxBackground m_parallaxBackground;
       
       TheGamesStates   m_CurrentGameState;
       sf::Text m_startMainuText, m_WinText, m_LoseText, m_ScoreText, m_highScoreText;
