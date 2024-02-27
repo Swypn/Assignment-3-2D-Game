@@ -17,6 +17,7 @@ public:
 	std::vector<parallaxPart> m_fallingStarRed;
 	void InitializeFallingStars(sf::Color color, float startX, float startY, int count, std::vector<parallaxPart>& stars);
 	void Update(float deltatime);
+	void Draw(sf::RenderWindow& window);
 	void Restart();
 private:
 	sf::Texture m_texture;

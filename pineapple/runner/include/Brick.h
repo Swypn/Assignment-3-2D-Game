@@ -10,6 +10,7 @@ public:
 	float startX, float startY, float spacingX);
 	void Update() noexcept;
 	void Restart();
+	void Draw(sf::RenderWindow& window);
 	void InitializeBricks(const sf::Texture& texture, int numBricks, float startX, float startY, float spacingX);
 	std::vector<sf::Sprite> m_brickSprites;
 private:

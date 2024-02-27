@@ -125,22 +125,11 @@ namespace runner
 #pragma warning(disable : 26446)
       if(m_CurrentGameState == TheGamesStates::running)
       {
-        for (int i = 0; i < m_parallaxBackground.m_fallingStarYellow.size(); i++)
-        {
-            m_window.draw(m_parallaxBackground.m_fallingStarYellow[i].sprite);
-        }
-        for (int i = 0; i < m_parallaxBackground.m_fallingStarRed.size(); i++)
-        {
-            m_window.draw(m_parallaxBackground.m_fallingStarRed[i].sprite);
-        }
+        m_parallaxBackground.Draw(m_window);
         m_window.draw(m_ScoreText);
         m_window.draw(m_player.m_playerSprite);
         m_window.draw(m_ball.m_ballSprite);
-
-        for(int i = 0; i < m_brick.m_brickSprites.size(); i++)
-        {
-           m_window.draw(m_brick.m_brickSprites[i]);
-        }
+        m_brick.Draw(m_window);
         
       }
 #pragma warning(pop)

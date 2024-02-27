@@ -15,6 +15,14 @@ void BrickContainer::Update() noexcept
 void BrickContainer::Restart()
 {
 	InitializeBricks(m_texture, m_numBricks, m_startX, m_startY, m_spacingX);
+}
+
+void BrickContainer::Draw(sf::RenderWindow& window)
+{
+	for(const auto& brick : m_brickSprites)
+	{
+		window.draw(brick);
+	}
 };
 
 void BrickContainer::InitializeBricks(const sf::Texture& texture, int numBricks, float startX, float startY, float spacingX)

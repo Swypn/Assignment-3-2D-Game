@@ -44,6 +44,16 @@ void parallaxBackground::Update(float deltatime)
 #pragma warning(pop)
 }
 
+void parallaxBackground::Draw(sf::RenderWindow& window)
+{
+	for (const auto& star : m_fallingStarYellow) {
+		window.draw(star.sprite);
+	}
+	for (const auto& star : m_fallingStarRed) {
+		window.draw(star.sprite);
+	}
+}
+
 void parallaxBackground::Restart()
 {
 	InitializeFallingStars(sf::Color::Yellow, 100.0f, -100.0f, m_yellowStarCount, m_fallingStarYellow);
